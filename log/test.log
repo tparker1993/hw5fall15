@@ -5757,3 +5757,128 @@ Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.1ms)
   [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
   [1m[35m (0.1ms)[0m  begin transaction
   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/movies/new" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.haml within layouts/application (25.0ms)
+Completed 200 OK in 238ms (Views: 226.6ms | ActiveRecord: 0.0ms)
+Started POST "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Men in Black", "rating"=>"PG-13", "release_date(1i)"=>"2015", "release_date(2i)"=>"10", "release_date(3i)"=>"9"}, "commit"=>"Save Changes"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("title", "rating", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Men in Black"], ["rating", "PG-13"], ["release_date", "2015-10-09 00:00:00.000000"], ["created_at", "2015-10-09 14:28:11.345320"], ["updated_at", "2015-10-09 14:28:11.345320"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/movies
+Completed 302 Found in 26ms (ActiveRecord: 1.2ms)
+Started GET "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')
+  Rendered movies/index.html.haml within layouts/application (17.9ms)
+Completed 200 OK in 36ms (Views: 24.4ms | ActiveRecord: 0.3ms)
+Started GET "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (5.8ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Started GET "/movies/new" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.haml within layouts/application (7.5ms)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms)
+Started POST "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Ted", "rating"=>"G", "release_date(1i)"=>"2015", "release_date(2i)"=>"10", "release_date(3i)"=>"9"}, "commit"=>"Save Changes"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "movies" ("title", "rating", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Ted"], ["rating", "G"], ["release_date", "2015-10-09 00:00:00.000000"], ["created_at", "2015-10-09 14:28:11.471445"], ["updated_at", "2015-10-09 14:28:11.471445"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies
+Completed 302 Found in 6ms (ActiveRecord: 0.6ms)
+Started GET "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (5.5ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 0.3ms)
+Started GET "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.7ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')
+  Rendered movies/index.html.haml within layouts/application (5.2ms)
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.7ms)
+Started GET "/movies/1" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.7ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered movies/show.html.haml within layouts/application (6.8ms)
+Completed 200 OK in 16ms (Views: 12.1ms | ActiveRecord: 0.7ms)
+Started GET "/movies/1/edit" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered movies/edit.html.haml within layouts/application (10.2ms)
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.1ms)
+Started PUT "/movies/1" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#update as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Ted", "rating"=>"R", "release_date(1i)"=>"2015", "release_date(2i)"=>"10", "release_date(3i)"=>"9"}, "commit"=>"Update Movie Info", "id"=>"1"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.7ms)[0m  [1mUPDATE "movies" SET "rating" = ?, "updated_at" = ? WHERE "movies"."id" = ?[0m  [["rating", "R"], ["updated_at", "2015-10-09 14:28:11.586986"], ["id", 1]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://www.example.com/movies/1
+Completed 302 Found in 12ms (ActiveRecord: 4.1ms)
+Started GET "/movies/1" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered movies/show.html.haml within layouts/application (1.2ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.1ms)
+Started GET "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')
+  Rendered movies/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Started GET "/movies/new" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.haml within layouts/application (7.6ms)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+Started POST "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#create as HTML
+  Parameters: {"utf8"=>"✓", "movie"=>{"title"=>"Argo", "rating"=>"R", "release_date(1i)"=>"2015", "release_date(2i)"=>"10", "release_date(3i)"=>"9"}, "commit"=>"Save Changes"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "movies" ("title", "rating", "release_date", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["title", "Argo"], ["rating", "R"], ["release_date", "2015-10-09 00:00:00.000000"], ["created_at", "2015-10-09 14:28:11.670183"], ["updated_at", "2015-10-09 14:28:11.670183"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/movies
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+Started GET "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')
+  Rendered movies/index.html.haml within layouts/application (6.6ms)
+Completed 200 OK in 12ms (Views: 9.5ms | ActiveRecord: 0.3ms)
+Started GET "/movies" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."rating" IN ('G', 'PG', 'PG-13', 'NC-17', 'R')[0m
+  Rendered movies/index.html.haml within layouts/application (5.1ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.3ms)
+Started GET "/movies/1" for 127.0.0.1 at 2015-10-09 14:28:11 +0000
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered movies/show.html.haml within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

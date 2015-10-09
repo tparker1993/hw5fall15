@@ -59,15 +59,15 @@ When /^I have opted to see movies rated: "(.*?)"$/ do |arg1|
   # HINT: use String#split to split up the rating_list, then
   # iterate over the ratings and check/uncheck the ratings
   # using the appropriate Capybara command(s)
-  pending
+  pending  #remove this statement after implementing the test step
 end
 
-Then /^I should see only movies rated "(.*?)"$/ do |arg1|
-  pending
+Then /^I should see only movies rated: "(.*?)"$/ do |arg1|
+  pending  #remove this statement after implementing the test step
 end
 
 Then /^I should see all of the movies$/ do
-  pending
+  pending  #remove this statement after implementing the test step
 end
 
 
