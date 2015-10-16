@@ -22,8 +22,15 @@ Background: movies have been added to database
   And I am on the RottenPotatoes home page
 
 Scenario: sort movies alphabetically
-  # your scenario here
+  
+  When I click "Movie Title"
+  And I sort the results by title
+  Then I should see "Aladdin" before "Amelie"
+  And I should see "Aladdin" before "Chicken Run"
 
 Scenario: sort movies in increasing order of release date
-  # your scenario here
+  When I click "Release Date"
+  And I sort the results by release date
+  Then I should see "Aladdin" before "The Incredibles"
+  And I should see "Raiders of the Lost Ark" before "Aladdin"
 
